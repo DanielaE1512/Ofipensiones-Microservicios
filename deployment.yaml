@@ -223,7 +223,7 @@ resources:
             docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8081:8080 gestor-cursos
 
 ##UI service
-- name: msd-ofipensiones-UI
+- name: msd-ofipensiones-ui
   type: compute.v1.instance
   properties:
     zone: us-central1-a
