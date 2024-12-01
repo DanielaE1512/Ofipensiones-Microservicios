@@ -1,0 +1,32 @@
+_format_version: "2.1"
+
+services:
+  - name: gestorUI_service
+    host: gestorrUI_upstream
+    protocol: http
+    routes:
+      - name: gestorUI
+        paths:
+          - /gestorUI
+        strip_path: false
+
+  - name: gestorCursos_service
+    host: gestorCursos_upstream
+    protocol: http
+    routes:
+      - name: gestorCursos
+        paths:
+          - /gestorCursos
+        strip_path: false
+
+upstreams:
+  - name: gestorrUI_upstream
+    targets:
+      - target: 10.128.0.86:8080
+        weight: 100
+
+  - name: gestorCursos_upstream
+    targets:
+      - target: 10.128.0.84:8081
+        weight: 100
+
