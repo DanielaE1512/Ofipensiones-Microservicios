@@ -210,9 +210,6 @@ resources:
         - key: startup-script
           value: |
             #!/bin/bash
-            curl -fsSL https://get.docker.com -o get-docker.sh
-            sh get-docker.sh
-            docker network create ofipensiones-net
             sudo mkdir -p /home/labs
             cd /home/labs
             sudo git clone https://github.com/DanielaE1512/Ofipensiones-Microservicios.git
