@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -79,7 +80,12 @@ WSGI_APPLICATION = 'gestorCursos.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'), 
+        'NAME': os.environ.get('DB_NAME', 'ofipensiones_db'),
+        'USER': os.environ.get('DB_USER', 'ofipensiones_user'),
+        'PASSWORD': os.environ.get('DB_PASSWORD', 'isis2503'),
+        'PORT': '5432',
+        'HOST': '10.128.0.82',
+        'PORT': '5432',
     }
 }
 
