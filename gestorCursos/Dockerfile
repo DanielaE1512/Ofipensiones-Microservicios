@@ -1,26 +1,29 @@
-FROM python:3.8.10-alpine3.13
+# Imagen base con Python
+FROM python:3.8-slim
 
+# Definir directorio de trabajo
 WORKDIR /app
 
-# Instalar dependencias del sistema
-RUN apk update && apk add --no-cache \
-    postgresql-dev \
+# Instalar dependencias del sistema necesarias para psycopg2 y otras librerías
+RUN apt-get update && apt-get install -y \
+    libpq-dev \
     gcc \
     python3-dev \
-    musl-dev \
-    libffi-dev
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
 
-# Copiar la aplicación Django al directorio de trabajo
+# Copiar archivos del proyecto al contenedor
 COPY . /app
 
-# Configurar variables de entorno
-ENV DB_Realacional_HOST=10.128.0.82
-
-# Actualizar pip para evitar problemas de instalación
+# Actualizar pip a la última versión
 RUN pip install --upgrade pip
 
 # Instalar dependencias de Python
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Definir el punto de entrada
-ENTRYPOINT ["sh", "init.sh"]
+# Exponer el puerto por defecto para Django
+EXPOSE 8000
+
+# Comando de inicio del contenedor
+CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
+
