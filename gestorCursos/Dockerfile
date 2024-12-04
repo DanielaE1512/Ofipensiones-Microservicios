@@ -6,7 +6,7 @@ WORKDIR /app
 COPY . /app
 
 # Set the environment variables
-ENV VARIABLES_DB_HOST 10.128.0.82
+ENV DB_Realacional_HOST 10.128.0.82
 
 # Install Python dependencies
 RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
