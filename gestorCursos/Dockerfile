@@ -1,29 +1,15 @@
-# Imagen base con Python
-FROM python:3.8-slim
+FROM python:3.8.10-alpine3.13
 
-# Definir directorio de trabajo
 WORKDIR /app
 
-# Instalar dependencias del sistema necesarias para psycopg2 y otras librerías
-RUN apt-get update && apt-get install -y \
-    libpq-dev \
-    gcc \
-    python3-dev \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-# Copiar archivos del proyecto al contenedor
+# Copy the django app to the working directory
 COPY . /app
 
-# Actualizar pip a la última versión
-RUN pip install --upgrade pip
+# Set the environment variables
+ENV DB_Realacional_HOST 10.128.0.82
 
-# Instalar dependencias de Python
+# Install Python dependencies
+RUN apk update && apk add postgresql-dev gcc python3-dev musl-dev
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Exponer el puerto por defecto para Django
-EXPOSE 8000
-
-# Comando de inicio del contenedor
-CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
+ENTRYPOINT ["sh", "init.sh"]

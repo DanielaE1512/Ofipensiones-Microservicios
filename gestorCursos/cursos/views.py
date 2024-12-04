@@ -1,10 +1,6 @@
-from django.shortcuts import redirect, render
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse
 from cursos.models import Curso
 
-
-from gestorUI.gestorUI.auth0backend import getRole
 
 def crear_curso(request):
                     if request.method == "POST":
