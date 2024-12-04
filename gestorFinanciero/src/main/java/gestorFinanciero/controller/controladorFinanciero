@@ -1,0 +1,19 @@
+import org.springframework.web.bind.annotation.*;
+import java.util.List;
+
+@RestController
+@RequestMapping("/api")
+public class controladorFinanciero {
+    // Método que recibe la petición POST con el JSON
+    @PostMapping("/calcularMora")
+    public long calcularTotalMora(@RequestBody List<Estudiante> estudiantes) {
+        long totalMora = 0;
+
+        // Iteramos sobre la lista de estudiantes y sumamos el valor de la mora
+        for (Estudiante estudiante : estudiantes) {
+            totalMora += estudiante.getValorMora();
+        }
+
+        return totalMora;
+    }
+}
