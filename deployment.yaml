@@ -177,7 +177,7 @@ resources:
 
             cd gestorCursos
             docker build -t gestor-cursos .
-            docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8080:8081 gestor-cursos
+            docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8080:8080 gestor-cursos
 
 ##Los otros Dockers
 
@@ -216,7 +216,7 @@ resources:
 
             cd gestorCursos
             docker build -t gestor-cursos .
-            docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8081:8080 gestor-cursos
+            docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8080:8081 gestor-cursos
 
 ##UI service
 - name: msd-ofipensiones-ui
