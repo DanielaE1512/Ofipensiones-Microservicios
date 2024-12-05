@@ -188,7 +188,7 @@ resources:
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
-        networkIP: 10.128.0.83
+        networkIP: 10.128.0.84
         accessConfigs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
@@ -245,7 +245,7 @@ resources:
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
-        networkIP: 10.128.0.83
+        networkIP: 10.128.0.85
         accessConfigs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
