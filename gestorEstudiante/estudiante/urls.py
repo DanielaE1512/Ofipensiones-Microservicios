@@ -16,9 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.conf.urls import url, include
 from django.views.decorators.csrf import csrf_exempt
-
+from django.urls import path
 from . import views
+from views import crearEstudiante
+from views import deleteAllEstudiantes
+from views import obtenerEstudiantesMora
 
-urlpatterns = [#TODO
+
+urlpatterns = [   path('crear/', crearEstudiante, name='crearEstudiante'),
+               path('eliminar/', deleteAllEstudiantes, name='deleteAllEstudiantes'),
+               path('obtener/', obtenerEstudiantesMora, name='obtenerEstudiantesMora')
     
-]
+    ]
