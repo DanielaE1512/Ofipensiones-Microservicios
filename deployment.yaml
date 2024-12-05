@@ -178,6 +178,23 @@ resources:
             cd gestorCursos
             docker build -t gestor-cursos .
             docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8080:8081 gestor-cursos
+             # gestorEstudiante
+            cd ..
+            cd gestorEstudiante
+            docker build -t gestor-estudiante .
+            docker run -d --network ofipensiones-net --name gestorEstudiante -p 8082:8083 gestor-estudiante
+
+            # gestorFinanciero
+            cd ..
+            cd gestorFinanciero
+            docker build -t gestor-financiero .
+            docker run -d --network ofipensiones-net --name gestorFinanciero -p 8084:8085 gestor-financiero
+
+            # PatronOrquestador
+            cd ..
+            cd patronOrquestador
+            docker build -t patron-orquestador .
+            docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
 
 ##Los otros Dockers
 
@@ -217,6 +234,24 @@ resources:
             cd gestorCursos
             docker build -t gestor-cursos .
             docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8081:8080 gestor-cursos
+            
+             # gestorEstudiante
+            cd ..
+            cd gestorEstudiante
+            docker build -t gestor-estudiante .
+            docker run -d --network ofipensiones-net --name gestorEstudiante -p 8082:8083 gestor-estudiante
+
+            # gestorFinanciero
+            cd ..
+            cd gestorFinanciero
+            docker build -t gestor-financiero .
+            docker run -d --network ofipensiones-net --name gestorFinanciero -p 8084:8085 gestor-financiero
+
+            # PatronOrquestador
+            cd ..
+            cd patronOrquestador
+            docker build -t patron-orquestador .
+            docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
 
 ##UI service
 - name: msd-ofipensiones-ui
