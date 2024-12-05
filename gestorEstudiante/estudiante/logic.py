@@ -42,8 +42,8 @@ def createEstudiante(data):
 
 
 def verifyCursoData(data):
-    if 'curso_id' not in data:
-        raise ValueError('curso_id is required')
+    if 'codigo_curso' not in data:
+        raise ValueError('codigo_curso is required')
     if 'mora' not in data or not isinstance(data['mora'], (int, float)):
         raise ValueError('mora is required and must be number')
 
