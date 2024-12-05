@@ -129,7 +129,7 @@ resources:
         boot: true
         autoDelete: true
         initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20231030
+          sourceImage:https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
         networkIP: 10.128.0.83
@@ -164,7 +164,7 @@ resources:
         boot: true
         autoDelete: true
         initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20231030
+          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
         networkIP: 10.128.0.84
@@ -200,7 +200,7 @@ resources:
         boot: true
         autoDelete: true
         initializeParams:
-          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20231030
+          sourceImage: https://www.googleapis.com/compute/v1/projects/ubuntu-os-cloud/global/images/ubuntu-2004-focal-v20240307b
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
         networkIP: 10.128.0.85
