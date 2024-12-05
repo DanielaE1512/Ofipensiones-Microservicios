@@ -156,17 +156,17 @@ resources:
 
             
             # gestorEstudiante
-            cd ../gestorEstudiante
+            cd gestorEstudiante
             docker build -t gestor-estudiante .
             docker run -d --network ofipensiones-net --name gestorEstudiante -p 8082:8083 gestor-estudiante
 
             # gestorFinanciero
-            cd ../gestorFinanciero
+            cd gestorFinanciero
             docker build -t gestor-financiero .
             docker run -d --network ofipensiones-net --name gestorFinanciero -p 8084:8085 gestor-financiero
 
             # PatronOrquestador
-            cd ../PatronOrquestador
+            cd PatronOrquestador
             docker build -t patron-orquestador .
             docker run -d --network ofipensiones-net --name PatronOrquestador -p 8086:8087 patron-orquestador
             
