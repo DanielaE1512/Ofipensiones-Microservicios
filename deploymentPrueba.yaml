@@ -117,7 +117,7 @@ resources:
 
 
 # Services instances
-#Ofipensiones service
+#Ofipensiones services
 - name: msd-ofipensiones-1
   type: compute.v1.instance
   properties:
@@ -173,3 +173,94 @@ resources:
             docker build -t patron-orquestador .
             docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
             
+#Replicación
+name: msd-ofipensiones-2
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/microservicios-443719/zones/us-central1-a/machineTypes/e2-micro
+    disks:
+      - deviceName: boot
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
+    networkInterfaces:
+      - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
+        networkIP: 10.128.0.84
+        accessConfigs:
+          - name: External NAT
+            type: ONE_TO_ONE_NAT
+    tags:
+      items: 
+        - msd-services-firewall
+    metadata:
+      items:
+        - key: startup-script
+          value: |
+            #!/bin/bash
+            docker network create ofipensiones-net
+            sudo mkdir -p /home/labs
+            cd /home/labs
+            sudo git clone https://github.com/DanielaE1512/Ofipensiones-Microservicios.git
+            cd Ofipensiones-Microservicios
+
+            cd gestorCursos
+            docker build -t gestor-cursos .
+            docker run -d --network ofipensiones-net --name gestorCursos -e DB_Realacional_HOST=10.128.0.82 -p 8080:8081 gestor-cursos
+            
+            
+            # gestorEstudiante
+            cd ..
+            cd gestorEstudiante
+            docker build -t gestor-estudiante .
+            docker run -d --network ofipensiones-net --name gestorEstudiante -p 8082:8083 gestor-estudiante
+
+            # gestorFinanciero
+            cd ..
+            cd gestorFinanciero
+            docker build -t gestor-financiero .
+            docker run -d --network ofipensiones-net --name gestorFinanciero -p 8084:8085 gestor-financiero
+
+            # PatronOrquestador
+            cd ..
+            cd patronOrquestador
+            docker build -t patron-orquestador .
+            docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
+            
+
+
+#Orquestador
+
+name: msd-orquestador
+  type: compute.v1.instance
+  properties:
+    zone: us-central1-a
+    machineType: https://www.googleapis.com/compute/v1/projects/microservicios-443719/zones/us-central1-a/machineTypes/e2-micro
+    disks:
+      - deviceName: boot
+        type: PERSISTENT
+        boot: true
+        autoDelete: true
+        initializeParams:
+          sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
+    networkInterfaces:
+      - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
+        networkIP: 10.128.0.85
+        accessConfigs:
+          - name: External NAT
+            type: ONE_TO_ONE_NAT
+    tags:
+      items: 
+        - msd-services-firewall
+    metadata:
+      items:
+        - key: startup-script
+          value: |
+            #!/bin/bash
+            docker network create ofipensiones-net
+            sudo mkdir -p /home/labs
+            cd /home/labs
+            sudo git clone https://github.com/DanielaE1512/Ofipensiones-Microservicios.git
+            cd Ofipensiones-Microservicios
