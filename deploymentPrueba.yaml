@@ -174,7 +174,7 @@ resources:
             docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
             
 #Replicación
-- name: msd-ofipensiones-1
+- name: msd-ofipensiones-2
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -231,7 +231,7 @@ resources:
 
 #Orquestador
 
-- name: msd-ofipensiones-1
+- name: msd-orquestador
   type: compute.v1.instance
   properties:
     zone: us-central1-a
