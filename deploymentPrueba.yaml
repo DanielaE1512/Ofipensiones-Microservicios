@@ -231,7 +231,7 @@ resources:
 
 #Orquestador
 
-name: msd-orquestador
+- name: msd-ofipensiones-1
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -245,7 +245,7 @@ name: msd-orquestador
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
-        networkIP: 10.128.0.85
+        networkIP: 10.128.0.83
         accessConfigs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
@@ -262,3 +262,5 @@ name: msd-orquestador
             cd /home/labs
             sudo git clone https://github.com/DanielaE1512/Ofipensiones-Microservicios.git
             cd Ofipensiones-Microservicios
+
+            
