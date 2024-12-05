@@ -174,7 +174,7 @@ resources:
             docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
             
 #Replicación
-name: msd-ofipensiones-2
+- name: msd-ofipensiones-1
   type: compute.v1.instance
   properties:
     zone: us-central1-a
@@ -188,7 +188,7 @@ name: msd-ofipensiones-2
           sourceImage: https://www.googleapis.com/compute/v1/projects/cos-cloud/global/images/cos-101-17162-463-8
     networkInterfaces:
       - network: https://www.googleapis.com/compute/v1/projects/microservicios-443719/global/networks/default
-        networkIP: 10.128.0.84
+        networkIP: 10.128.0.83
         accessConfigs:
           - name: External NAT
             type: ONE_TO_ONE_NAT
@@ -228,8 +228,6 @@ name: msd-ofipensiones-2
             cd patronOrquestador
             docker build -t patron-orquestador .
             docker run -d --network ofipensiones-net --name patronOrquestador -p 8086:8087 patron-orquestador
-            
-
 
 #Orquestador
 
